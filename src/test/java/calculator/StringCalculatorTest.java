@@ -4,8 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 
 public class StringCalculatorTest {
     @DisplayName("구분자를 기준으로 분리한 숫자의 합을 반환한다.")
@@ -19,7 +20,7 @@ public class StringCalculatorTest {
         int actual = stringCalculator.sumString(value);
 
         // then
-        assertEquals(75, actual);
+        assertThat(actual).isEqualTo(75);
     }
 
     @DisplayName("잘못된 형식이나 음수를 입력했을 때 RuntimeException을 throw한다.")
@@ -32,6 +33,6 @@ public class StringCalculatorTest {
         // when
 
         // then
-        assertThrows(RuntimeException.class, () -> stringCalculator.sumString(value));
+        assertThatThrownBy(() -> stringCalculator.sumString(value)).isInstanceOf(RuntimeException.class);
     }
 }

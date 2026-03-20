@@ -3,7 +3,8 @@ package calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class CalculatorTest {
 
@@ -17,7 +18,7 @@ public class CalculatorTest {
         int actual = calculator.add(3, 6);
 
         // then
-        assertEquals(9, actual);
+        assertThat(actual).isEqualTo(9);
     }
 
     @DisplayName("두 개의 정수를 뺀 결과를 반환할 수 있다.")
@@ -30,7 +31,7 @@ public class CalculatorTest {
         int actual = calculator.subtract(6, 3);
 
         // then
-        assertEquals(3, actual);
+        assertThat(actual).isEqualTo(3);
     }
 
     @DisplayName("두 개의 정수를 곱한 결과를 반환할 수 있다.")
@@ -43,7 +44,7 @@ public class CalculatorTest {
         int actual = calculator.multiply(3, 6);
 
         // then
-        assertEquals(18, actual);
+        assertThat(actual).isEqualTo(18);
     }
 
     @DisplayName("두 개의 정수를 나눈 결과를 반환할 수 있다.")
@@ -56,6 +57,6 @@ public class CalculatorTest {
         int actual = calculator.divide(6, 3);
 
         // then
-        assertEquals(2, actual);
+        assertThat(actual).isEqualTo(2);
     }
 }
