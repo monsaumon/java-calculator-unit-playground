@@ -7,12 +7,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CalculatorTest {
+    static Calculator calculator = new Calculator();
 
     @DisplayName("두 개의 정수를 더한 결과를 반환할 수 있다.")
     @Test
     void testAdd() {
         // given
-        Calculator calculator = new Calculator();
 
         // when
         int actual = calculator.add(3, 6);
@@ -25,7 +25,6 @@ public class CalculatorTest {
     @Test
     void testSubtract() {
         // given
-        Calculator calculator = new Calculator();
 
         // when
         int actual = calculator.subtract(6, 3);
@@ -38,7 +37,6 @@ public class CalculatorTest {
     @Test
     void testMultiply() {
         // given
-        Calculator calculator = new Calculator();
 
         // when
         int actual = calculator.multiply(3, 6);
@@ -51,7 +49,6 @@ public class CalculatorTest {
     @Test
     void testDivide() {
         // given
-        Calculator calculator = new Calculator();
 
         // when
         int actual = calculator.divide(6, 3);
