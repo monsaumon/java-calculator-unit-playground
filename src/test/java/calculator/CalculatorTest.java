@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class CalculatorTest {
@@ -55,5 +56,14 @@ public class CalculatorTest {
 
         // then
         assertThat(actual).isEqualTo(2);
+    }
+
+    @DisplayName("0으로 나누었을 때 에러가 발생한다.")
+    @Test
+    void testDividedByZero() {
+        // given
+
+        // when & then
+        assertThatThrownBy(() -> calculator.divide(6, 0)).isInstanceOf(ArithmeticException.class);
     }
 }
