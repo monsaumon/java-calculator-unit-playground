@@ -9,12 +9,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
+    static StringCalculator stringCalculator = new StringCalculator();
+
     @DisplayName("구분자를 기준으로 분리한 숫자의 합을 반환한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1,22,3,44,5", "1:22:3:44:5", "1,22,3:44:5", "//;\n1,22;3:44;5", "//a\n1a22a3a44a5", "//a+|\n1+22|3a44,5"})
     void testSumString(String value) {
         // given
-        StringCalculator stringCalculator = new StringCalculator();
 
         // when
         int actual = stringCalculator.sumString(value);
@@ -28,11 +29,8 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"1a2,3", "//a1a2a3", "//a\n-1a2a3", "//a\n1a-2a3", "//a\n1a2b3"})
     void testSumStringException(String value) {
         // given
-        StringCalculator stringCalculator = new StringCalculator();
 
-        // when
-
-        // then
+        // when & then
         assertThatThrownBy(() -> stringCalculator.sumString(value)).isInstanceOf(RuntimeException.class);
     }
 }
