@@ -6,7 +6,7 @@ public class StringCalculator {
     private int customSeparatorEndIndex;
 
     // 각 과정을 순차적으로 실행
-    public int sumString(String input) {
+    public int calculateSumOfString(String input) {
         StringBuilder separators = getSeparators(input);
         Pattern pattern = generatePatternFromSeparators(separators);
         return splitAndSum(input, pattern);

@@ -23,7 +23,7 @@ public class StringCalculatorTest {
     @CsvSource(value = {"'1,2,3,4,5'& 15", "'1:2:33:4:5'& 45", "'1,22,3:4:5'& 35", "'//;\n1,22;3:44;5'& 75", "'//a\n1a2a3a4a55'& 65", "'//a[|\n1[22|3a4,55'& 85"}, delimiter = '&')
     void testSumString(String value, int expected) {
         // when
-        int actual = stringCalculator.sumString(value);
+        int actual = stringCalculator.calculateSumOfString(value);
 
         // then
         assertThat(actual).isEqualTo(expected);
@@ -34,6 +34,6 @@ public class StringCalculatorTest {
     @ValueSource(strings = {"1a2,3", "//a1a2a3", "//a\n-1a2a3", "//a\n1a-2a3", "//a\n1a2b3", "1[2[3"})
     void testSumStringException(String value) {
         // when & then
-        assertThatThrownBy(() -> stringCalculator.sumString(value)).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> stringCalculator.calculateSumOfString(value)).isInstanceOf(RuntimeException.class);
     }
 }
