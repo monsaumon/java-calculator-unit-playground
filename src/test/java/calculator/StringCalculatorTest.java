@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -9,7 +10,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class StringCalculatorTest {
-    static StringCalculator stringCalculator = new StringCalculator();
+    private static StringCalculator stringCalculator;
+
+    @BeforeAll
+    static void beforeAll() {
+        stringCalculator = new StringCalculator();
+    }
 
     @DisplayName("구분자를 기준으로 분리한 숫자의 합을 반환한다.")
     @ParameterizedTest

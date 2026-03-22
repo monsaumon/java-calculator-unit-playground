@@ -1,5 +1,6 @@
 package calculator;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,7 +11,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class CalculatorTest {
-    static Calculator calculator = new Calculator();
+    private static Calculator calculator;
+
+    @BeforeAll
+    static void beforeAll() {
+        calculator = new Calculator();
+    }
 
     @DisplayName("두 개의 정수를 더한 결과를 반환할 수 있다.")
     @ParameterizedTest
