@@ -15,8 +15,6 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1,22,3,44,5", "1:22:3:44:5", "1,22,3:44:5", "//;\n1,22;3:44;5", "//a\n1a22a3a44a5", "//a[|\n1[22|3a44,5"})
     void testSumString(String value) {
-        // given
-
         // when
         int actual = stringCalculator.sumString(value);
 
@@ -28,8 +26,6 @@ public class StringCalculatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1a2,3", "//a1a2a3", "//a\n-1a2a3", "//a\n1a-2a3", "//a\n1a2b3", "1[2[3"})
     void testSumStringException(String value) {
-        // given
-
         // when & then
         assertThatThrownBy(() -> stringCalculator.sumString(value)).isInstanceOf(RuntimeException.class);
     }

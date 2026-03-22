@@ -16,8 +16,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"1,2,3", "2,3,5", "3,6,9"})
     void testAdd(int num1, int num2, int expected) {
-        // given
-
         // when
         int actual = calculator.add(num1, num2);
 
@@ -29,8 +27,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3,2,1", "9,3,6", "1,4,-3"})
     void testSubtract(int num1, int num2, int expected) {
-        // given
-
         // when
         int actual = calculator.subtract(num1, num2);
 
@@ -42,8 +38,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"3,6,18", "6,0,0", "3,-3,-9"})
     void testMultiply(int num1, int num2, int expected) {
-        // given
-
         // when
         int actual = calculator.multiply(num1, num2);
 
@@ -55,8 +49,6 @@ public class CalculatorTest {
     @ParameterizedTest
     @CsvSource(value = {"6,3,2", "0,6,0", "9,-3,-3"})
     void testDivide(int num1, int num2, int expected) {
-        // given
-
         // when
         int actual = calculator.divide(num1, num2);
 
@@ -67,8 +59,6 @@ public class CalculatorTest {
     @DisplayName("0으로 나누었을 때 에러가 발생한다.")
     @Test
     void testDividedByZero() {
-        // given
-
         // when & then
         assertThatThrownBy(() -> calculator.divide(6, 0)).isInstanceOf(ArithmeticException.class);
     }
