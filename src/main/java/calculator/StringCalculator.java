@@ -9,7 +9,8 @@ public class StringCalculator {
     public int calculateSumOfString(String input) {
         StringBuilder separators = getSeparators(input);
         Pattern pattern = generatePatternFromSeparators(separators);
-        return splitAndSum(input, pattern);
+        String[] splitNumbers = splitString(input, pattern);
+        return sumStringArray(splitNumbers);
     }
 
     // 구분자 문자열 생성
@@ -49,18 +50,20 @@ public class StringCalculator {
     }
 
     // Pattern에 따라 문자열을 분할하고 숫자 총합 구하기
-    private int splitAndSum(String input, Pattern pattern) {
+    private String[] splitString(String input, Pattern pattern) {
         // custom separator 지정 부분 잘라내기
         String numString = input.substring(customSeparatorEndIndex + 1);
 
-        // 정규표현식 기준으로 나누기
-        String[] splitString = pattern.split(numString);
+        // 정규표현식 기준으로 나누고 반환
+        return pattern.split(numString);
+    }
 
+    private int sumStringArray(String[] splitNumbers) {
         // 분할된 숫자 총합 구하기
         int sum = 0;
-        for (String str: splitString) {
+        for (String strNum: splitNumbers) {
             try{
-                int num = Integer.parseInt(str);
+                int num = Integer.parseInt(strNum);
                 if (num < 0) {
                     throw new RuntimeException("Do not input negative numbers");
                 }
